@@ -60,6 +60,7 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','middleware'=>'is_admin'
         Route::post('/update','BrandController@update')->name('brand.update');
     });
     Route::prefix('setting')->group(function () {
+        //seo setting
         Route::prefix('seo')->group(function () {
             Route::get('/','SettingController@seo')->name('seo.setting');
             Route::post('/update/{id}','SettingController@seoUpdate')->name('seo.setting.update');
@@ -94,5 +95,14 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','middleware'=>'is_admin'
 	    });
 
     });
+            //Coupon Routes
+            Route::group(['prefix'=>'coupon'], function(){
+                Route::get('/','CouponController@index')->name('coupon.index');
+                Route::get('/create','CouponController@create')->name('create.coupon');
+                Route::post('/store','CouponController@store')->name('store.coupon');
+                Route::get('/delete/{id}','CouponController@delete')->name('coupon.delete');
+                Route::get('/edit/{id}','CouponController@edit')->name('edit.coupon');
+                Route::post('/update/{id}','CouponController@update')->name('update.coupon');
+            });
 
 });

@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pickup_point', function (Blueprint $table) {
+        Schema::create('pickups', function (Blueprint $table) {
             $table->id();
             $table->string('pickup_point_name')->nullable();
             $table->string('pickup_point_address')->nullable();

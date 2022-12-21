@@ -1,5 +1,5 @@
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar sidebar-dark-primary elevation-2">
     <!-- Brand Logo -->
     <a href="{{route('admin.home')}}" class="brand-link">
       <img src="{{asset('public/backend/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -74,6 +74,35 @@
                 </a>
               </li>
             </ul>
+          </li>
+
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Product
+                <i class="fas fa-angle-left right"></i>
+                <span class="badge badge-info right">2</span>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('product.create')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>New Product</p>
+                </a>
+              </li>
+            </ul>
+
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Manage Product</p>
+                  </a>
+                </li>
+              </ul>
           </li>
 
 

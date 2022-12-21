@@ -42,13 +42,13 @@ class CouponController extends Controller
 
         ]);
         $notification=array('messege' =>'Coupon Inserted' ,'alert-type'=>'success' );
-        return redirect()->back()->with($notification);
+        return redirect()->route('coupon.index')->with($notification);
     }
     public function delete($id)
     {
         Coupon::destroy($id);
         $notification=array('messege' =>'Coupon Deleted!' ,'alert-type'=>'success' );
-        return redirect()->back()->with($notification);
+        return redirect()->route('coupon.index')->with($notification);
     }
     public function edit($id)
     {
@@ -69,7 +69,7 @@ class CouponController extends Controller
 
         ]);
         $notification=array('messege' =>'Coupon Updated!' ,'alert-type'=>'success' );
-        return redirect()->back()->with($notification);
+        return redirect()->route('coupon.index')->with($notification);
     }
 
  }

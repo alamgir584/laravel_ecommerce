@@ -69,7 +69,7 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="form-group col-lg-6">
+                    {{-- <div class="form-group col-lg-6">
                       <label for="exampleInputEmail1">Category/Subcategory <span class="text-danger">*</span> </label>
                       <select class="form-control" name="subcategory_id" id="subcategory_id">
                         <option disabled="" selected="">==choose category==</option>
@@ -77,17 +77,40 @@
                            @php
                               $subcategory=DB::table('subcategories')->where('category_id',$row->id)->get();
                            @endphp
-                           <option style="color:blue;" disabled="">{{ $row->category_name }}</option>
+                           <option style="color:rgb(190, 226, 90);" disabled="">{{ $row->category_name }}</option>
                               @foreach($subcategory as $row)
                                 <option value="{{ $row->id }}"> -- {{ $row->subcategory_name }}</option>
                               @endforeach
                         @endforeach
                       </select>
+                    </div> --}}
+                    <div class="form-group col-lg-6">
+                        <label for="exampleInputPassword1">category<span class="text-danger">*</span> </label>
+                        <select class="form-control" name="category_id" id="category_id">
+                          @foreach($category as $row)
+
+                            <option value="{{ $row->id }}">{{ $row->category_name }}</option>
+                          @endforeach
+                        </select>
+
+
                     </div>
+                      <div class="form-group col-lg-6">
+                        <label for="exampleInputPassword1">Subcategory<span class="text-danger">*</span> </label>
+                        <select class="form-control" name="subcategory_id" id="subcategory_id">
+                          @foreach($subcategory as $row)
+                            <option value="{{ $row->id }}">{{ $row->subcategory_name }}</option>
+                          @endforeach
+                        </select>
+                      </div>
+
+
                     <div class="form-group col-lg-6">
                       <label for="exampleInputPassword1">Child category<span class="text-danger">*</span> </label>
                       <select class="form-control" name="childcategory_id" id="childcategory_id">
-
+                        @foreach($childcategory as $row)
+                          <option value="{{ $row->id }}">{{ $row->childcategory_name }}</option>
+                        @endforeach
                       </select>
                     </div>
                   </div>
@@ -134,14 +157,14 @@
                     </div>
                   </div>
                   <div class="row">
-                    {{-- <div class="form-group col-lg-6">
+                    <div class="form-group col-lg-6">
                       <label for="exampleInputEmail1">Warehouse <span class="text-danger">*</span> </label>
                       <select class="form-control" name="warehouse">
-                        @foreach($warehosue as $row)
+                        @foreach($warehouse as $row)
                          <option value="{{ $row->warehouse_name }}">{{ $row->warehouse_name }}</option>
                         @endforeach
                       </select>
-                    </div> --}}
+                    </div>
                     <div class="form-group col-lg-6">
                       <label for="exampleInputPassword1">Stock</label>
                       <input type="text" name="stock_quantity" value="{{ old('stock_quantity') }}" class="form-control">
@@ -174,14 +197,14 @@
                     </div>
                   </div>
                 </div>
-                <!-- /.card-body -->
+
             </div>
-            <!-- /.card -->
+
            </div>
-            <!-- /.card -->
-          <!-- right column -->
+
+
           <div class="col-md-4">
-            <!-- Form Element sizes -->
+
             <div class="card card-primary">
               <div class="card-body">
                   <div class="form-group">
@@ -225,16 +248,15 @@
                      </div>
 
               </div>
-              <!-- /.card-body -->
+
             </div>
-            <!-- /.card -->
+
            </div>
            <button class="btn btn-info ml-2" type="submit">Submit</button>
          </div>
         </form>
-      </div><!-- /.container-fluid -->
+      </div>
     </section>
-    <!-- /.content -->
   </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -248,20 +270,7 @@
   $("input[data-bootstrap-switch]").each(function(){
       $(this).bootstrapSwitch('state', $(this).prop('checked'));
     });
-     //ajax request send for collect childcategory
-     $("#subcategory_id").change(function(){
-      var id = $(this).val();
-      $.ajax({
-           url: "{{ url("/get-child-category/") }}/"+id,
-           type: 'get',
-           success: function(data) {
-                $('select[name="childcategory_id"]').empty();
-                   $.each(data, function(key,data){
-                      $('select[name="childcategory_id"]').append('<option value="'+ data.id +'">'+ data.childcategory_name +'</option>');
-                });
-           }
-        });
-     });
+
     $(document).ready(function(){
        var postURL = "<?php echo url('addmore'); ?>";
        var i=1;
@@ -274,6 +283,37 @@
             $('#row'+button_id+'').remove();
        });
      });
+
+     //ajax request send for collect childcategory mane holo category select korle categoryr under a joto sub categore ache se gulo asbe sob subcategory asbe na
+     $("#category_id").change(function(){
+      var id = $(this).val();
+      $.ajax({
+           url: "{{ url("/get-sub-category/") }}/"+id,
+           type: 'get',
+           success: function(data) {
+                $('select[name="subcategory_id"]').empty();
+                   $.each(data, function(key,data){
+                      $('select[name="subcategory_id"]').append('<option value="'+ data.id +'">'+ data.subcategory_name +'</option>');
+                });
+           }
+        });
+     });
+
+
+    //  $("#subcategory_id").change(function(){
+    //   var id = $(this).val();
+    //   $.ajax({
+    //        url: "{{ url("/get-child-category/") }}/"+id,
+    //        type: 'get',
+    //        success: function(data) {
+    //             $('select[name="childcategory_id"]').empty();
+    //                $.each(data, function(key,data){
+    //                   $('select[name="childcategory_id"]').append('<option value="'+ data.id +'">'+ data.childcategory_name +'</option>');
+    //             });
+    //        }
+    //     });
+    //  });
+
 
 </script>
 @endsection

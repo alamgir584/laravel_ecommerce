@@ -41,7 +41,7 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','middleware'=>'is_admin'
     });
     //Global Route
     Route::get('/get-sub-category/{id}','CategoryController@GetSubCategory');
-    // Route::get('/get-child-category/{id}','CategoryController@GetChildCategory');
+    Route::get('/get-child-category/{id}','CategoryController@GetChildCategory');
      //subcategory Routes
     Route::prefix('subcategory')->group(function () {
         Route::get('/','SubcategoryController@index')->name('subcategory.index');

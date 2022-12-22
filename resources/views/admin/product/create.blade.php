@@ -98,9 +98,9 @@
                       <div class="form-group col-lg-6">
                         <label for="exampleInputPassword1">Subcategory<span class="text-danger">*</span> </label>
                         <select class="form-control" name="subcategory_id" id="subcategory_id">
-                          @foreach($subcategory as $row)
+                          {{-- @foreach($subcategory as $row)
                             <option value="{{ $row->id }}">{{ $row->subcategory_name }}</option>
-                          @endforeach
+                          @endforeach --}}
                         </select>
                       </div>
 
@@ -108,9 +108,9 @@
                     <div class="form-group col-lg-6">
                       <label for="exampleInputPassword1">Child category<span class="text-danger">*</span> </label>
                       <select class="form-control" name="childcategory_id" id="childcategory_id">
-                        @foreach($childcategory as $row)
+                        {{-- @foreach($childcategory as $row)
                           <option value="{{ $row->id }}">{{ $row->childcategory_name }}</option>
-                        @endforeach
+                        @endforeach --}}
                       </select>
                     </div>
                   </div>
@@ -300,19 +300,21 @@
      });
 
 
-    //  $("#subcategory_id").change(function(){
-    //   var id = $(this).val();
-    //   $.ajax({
-    //        url: "{{ url("/get-child-category/") }}/"+id,
-    //        type: 'get',
-    //        success: function(data) {
-    //             $('select[name="childcategory_id"]').empty();
-    //                $.each(data, function(key,data){
-    //                   $('select[name="childcategory_id"]').append('<option value="'+ data.id +'">'+ data.childcategory_name +'</option>');
-    //             });
-    //        }
-    //     });
-    //  });
+     $("#subcategory_id").change(function(){
+      var id = $(this).val();
+
+      $.ajax({
+           url: "{{ url("/get-child-category/") }}/"+id,
+           type: 'get',
+           success: function(data) {
+            console.log(data);
+                $('select[name="childcategory_id"]').empty();
+                   $.each(data, function(key,data){
+                      $('select[name="childcategory_id"]').append('<option value="'+ data.id +'">'+ data.childcategory_name +'</option>');
+                });
+           }
+        });
+     });
 
 
 </script>

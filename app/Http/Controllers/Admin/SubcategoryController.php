@@ -64,4 +64,10 @@ class SubcategoryController extends Controller
         $notification=array('messege' =>'Sub Category Updated!' ,'alert-type'=>'success' );
         return redirect()->back()->with($notification);
     }
+
+    // public function GetChildCategory()
+    // {
+    //     $data=DB::table('childcategories')->where('subcategory_id',$id)->get();
+    //     return response()->json($data);
+    // }
 }

@@ -53,6 +53,7 @@ class ChildCategoryController extends Controller
     public function update(Request $request)
     {
         $childcategory=Childcategory::where('id',$request->id)->first();
+        
         $childcategory->update([
             'childcategory_name'=>$request->childcategory_name,
             'childcategory_slug'=>Str::slug($request->childcategory_name, '-'),

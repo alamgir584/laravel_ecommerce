@@ -16,7 +16,7 @@ class Childcategory extends Model
 
     ];
 
-    // for category show in subcategory
+    // // for show subcategory under category
     public function Category()
    {
     return $this->belongsTo(Category::class, 'category_id', 'id');

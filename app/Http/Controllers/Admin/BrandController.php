@@ -30,10 +30,12 @@ class BrandController extends Controller
             'brand_name' => 'required|unique:brands|max:55',
         ]);
         $slug=Str::slug($request->brand_name, '-');
+
     	  $photo=$request->brand_logo;
     	  $photoname=uniqid().'.'.$photo->getClientOriginalName();
     	  Image::make($photo)->resize(240,120)->save('public/files/brand/'.$photoname);
     	  $data['brand_logo']='public/files/brand/'.$photoname;
+          
         Brand::insert([
             'brand_name'=>$request->brand_name,
             'brand_logo'=>$photoname,

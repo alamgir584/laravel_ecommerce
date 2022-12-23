@@ -1,25 +1,26 @@
 @extends('layouts.admin')
 
 @section('admin_content')
-  <!-- Content Wrapper. Contains page content -->
+{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.6.0/bootstrap-tagsinput.css" integrity="sha512-3uVpgbpX33N/XhyD3eWlOgFVAraGn3AfpxywfOTEQeBDByJ/J7HkLvl4mJE1fvArGh4ye1EiPfSBnJo2fgfZmg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script type="text/javascript" src="http://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script> --}}
+
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1 class="m-0"> Sub Category</h1>
-          </div><!-- /.col -->
+          </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <button class="btn btn-primary" data-toggle="modal" data-target="#categoryModal">+Add New</button>
             </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
+          </div>
+        </div>
+      </div>
     </div>
 
-        <!-- Main content -->
+
         <section class="content">
             <div class="container-fluid">
               <div class="row">
@@ -28,7 +29,7 @@
                     <div class="card-header">
                       <h3 class="card-title">All Sub Categories List</h3>
                     </div>
-                    <!-- /.card-header -->
+
                     <div class="card-body">
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
@@ -144,6 +145,10 @@
     </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://jeremyfagis.github.io/dropify/dist/js/dropify.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://jeremyfagis.github.io/dropify/dist/css/dropify.min.css">
+<script src="{{ asset('public/backend') }}/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script> --}}
 
   <script type="text/javascript">
   $('body').on('click','.edit',function(){
@@ -153,6 +158,23 @@
            $('#edit_subcategory_id').val(data.id);
    });
   });
+
+       //ajax request send for collect childcategory mane holo category select korle categoryr under a joto sub categore ache se gulo asbe sob subcategory asbe na
+    //    $("#category_id").change(function(){
+    //   var id = $(this).val();
+    //   $.ajax({
+    //        url: "{{ url("/get-sub-category/") }}/"+id,
+    //        type: 'get',
+    //        success: function(data) {
+    //             $('select[name="subcategory_id"]').empty();
+    //                $.each(data, function(key,data){
+    //                   $('select[name="subcategory_id"]').append('<option value="'+ data.id +'">'+ data.subcategory_name +'</option>');
+    //             });
+    //        }
+    //     });
+    //  });
+
+
   </script>
 
   {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

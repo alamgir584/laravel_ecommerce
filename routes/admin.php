@@ -126,7 +126,7 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','middleware'=>'is_admin'
             Route::get('/','ProductController@index')->name('product.index');
             Route::get('/create','ProductController@create')->name('product.create');
             Route::post('/store','ProductController@store')->name('product.store');
-            // Route::get('/delete/{id}','PickupController@delete')->name('pickup-point.delete');
+            Route::get('/delete/{id}','ProductController@delete')->name('product.delete');
             // Route::get('/edit/{id}','PickupController@edit')->name('edit.pickup-point');
             // Route::post('/update/{id}','PickupController@update')->name('update.pickup-point');
                          });

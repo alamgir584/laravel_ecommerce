@@ -16,6 +16,7 @@ use App\Models\Childcategory;
 use App\Models\Brand;
 use App\Models\pickup\Pickup;
 use App\Models\setting\Warehouse;
+use App\Models\Product;
 
 
 class ProductController extends Controller
@@ -23,6 +24,12 @@ class ProductController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+    //index method
+    public function index()
+    {
+        $product=Product::all();
+        return view('admin.product.index', compact('product'));
     }
     public function create()
     {
@@ -48,7 +55,7 @@ class ProductController extends Controller
         ]);
     //subcategory call for category id
 
-    //$subcategory=DB::table('subcategories')->where('id',$request->subcategory_id)      ->first();
+
        $slug=Str::slug($request->name, '-');
 
 

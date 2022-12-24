@@ -115,7 +115,6 @@ class ProductController extends Controller
     // {
     // 	$data=DB::table('products')->where('id',$id)->first();
     // 	$image='public/files/product/'.$data->thumbnail;
-    //     //$image='public/files/product/'.$data->images;
 
     // 	if (File::exists($image)) {
     // 		 unlink($image);

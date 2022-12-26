@@ -35,7 +35,7 @@ class BrandController extends Controller
     	  $photoname=uniqid().'.'.$photo->getClientOriginalName();
     	  Image::make($photo)->resize(240,120)->save('public/files/brand/'.$photoname);
     	  $data['brand_logo']='public/files/brand/'.$photoname;
-          
+
         Brand::insert([
             'brand_name'=>$request->brand_name,
             'brand_logo'=>$photoname,
@@ -68,8 +68,7 @@ class BrandController extends Controller
     }
     public function update(Request $request)
     {
-        // print_r($request->input());
-        // die;
+        
     	$data=array();
     	$data['brand_name']=$request->brand_name;
     	$data['brand_slug']=Str::slug($request->brand_name, '-');

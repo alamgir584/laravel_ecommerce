@@ -147,5 +147,17 @@ class ProductController extends Controller
            return redirect()->back()->with($notification);
         }
 
+        public function edit($id)
+        {
+            $data=Product::findorfail($id);
+            $category=Category::findorfail($id);
+            return view('admin.product.edit', compact('data','category'));
+
+        }
+        public function update(Request $request)
+        {
+
+        }
+
 
 }

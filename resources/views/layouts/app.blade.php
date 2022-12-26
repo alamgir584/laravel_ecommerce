@@ -20,6 +20,8 @@
 <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/plugins/slick-1.8.0/slick.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/styles/main_styles.css')}}">
 <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/styles/responsive.css') }}">
+{{-- <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/styles/product_styles.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('public/frontend/styles/product_responsive.css')}}"> --}}
 </head>
 
 <body>
@@ -140,7 +142,7 @@
 		</div>
 
 		<!-- Main Navigation -->
-        @include('layouts.front_partial.main_nav')
+
 
 		<!-- Menu -->
 
@@ -227,6 +229,7 @@
 				</div>
 			</div>
 		</div>
+        @yield('navbar')
 
 	</header>
 
@@ -348,6 +351,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="{{asset('public/frontend/plugins/slick-1.8.0/slick.js')}}"></script>
 <script src="{{asset('public/frontend/plugins/easing/easing.js')}}"></script>
 <script src="{{asset('public/frontend/js/custom.js')}}"></script>
+{{-- <script src="{{('js/product_custom.js"')}}></script> --}}
 </body>
 
 </html>

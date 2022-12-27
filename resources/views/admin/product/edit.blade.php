@@ -22,7 +22,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Edit Product</h1>
+            <h1>New Product</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Add product</li>
+            </ol>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -41,41 +47,30 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-       <form action="{{ route('product.update',$data->id) }}" method="post" enctype="multipart/form-data">
+       <form action="{{ route('product.store') }}" method="post" enctype="multipart/form-data">
         @csrf
        	<div class="row">
           <!-- left column -->
           <div class="col-md-8">
             <!-- general form elements -->
             <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Edit Product</h3>
+              </div>
               <!-- /.card-header -->
                 <div class="card-body">
                   <div class="row">
                     <div class="form-group col-lg-6">
                       <label for="exampleInputEmail1">Product Name <span class="text-danger">*</span> </label>
-                      <input type="text" class="form-control" name="name" value="{{$data->name}}" required="">
+                      <input type="text" class="form-control" name="name" value="{{$product->name}}"  required="">
                     </div>
                     <div class="form-group col-lg-6">
                       <label for="exampleInputPassword1">Product Code <span class="text-danger">*</span> </label>
-                      <input type="text" class="form-control" value="{{$data->code}}"  name="code" required="">
+                      <input type="text" class="form-control" value="{{$product->code}}" name="code" required="">
                     </div>
                   </div>
                   <div class="row">
-                    {{-- <div class="form-group col-lg-6">
-                      <label for="exampleInputEmail1">Category/Subcategory <span class="text-danger">*</span> </label>
-                      <select class="form-control" name="subcategory_id" id="subcategory_id">
-                        <option disabled="" selected="">==choose category==</option>
-                        @foreach($category as $row)
-                           @php
-                              $subcategory=DB::table('subcategories')->where('category_id',$row->id)->get();
-                           @endphp
-                           <option style="color:rgb(190, 226, 90);" disabled="">{{ $row->category_name }}</option>
-                              @foreach($subcategory as $row)
-                                <option value="{{ $row->id }}"> -- {{ $row->subcategory_name }}</option>
-                              @endforeach
-                        @endforeach
-                      </select>
-                    </div> --}}
+
                     <div class="form-group col-lg-6">
                         <label for="exampleInputPassword1">category<span class="text-danger">*</span> </label>
                         <select class="form-control" name="category_id" id="category_id">
@@ -126,65 +121,64 @@
                   <div class="row">
                     <div class="form-group col-lg-6">
                       <label for="exampleInputEmail1">Unit <span class="text-danger">*</span> </label>
-                      <input type="text" class=form-control name="unit" value="{{$data->unit}}" required="">
+                      <input type="text" class=form-control name="unit" value="{{$product->unit}}" required="">
                     </div>
                     <div class="form-group col-lg-6">
                       <label for="exampleInputPassword1">Tags</label><br>
-                      <input type="text" name="tags" class="form-control" value="{{$data->tags}}"  name="tags" data-role="tagsinput">
+                      <input type="text" name="tags" class="form-control" value="{{$product->tags}}" name="tags" data-role="tagsinput">
                     </div>
                   </div>
                   <div class="row">
                     <div class="form-group col-lg-4">
                       <label for="exampleInput">Purchase Price  </label>
-                      <input type="text" class="form-control" value="{{$data->purchase_price}}"  name="purchase_price">
+                      <input type="text" class="form-control" value="{{$product->purchase_price}}" name="purchase_price">
                     </div>
                     <div class="form-group col-lg-4">
                       <label for="exampleInput">Selling Price <span class="text-danger">*</span> </label>
-                      <input type="text" name="selling_price" value="{{$data->selling_price}}" class="form-control" required="">
+                      <input type="text" name="selling_price" value="{{$product->selling_price}}" class="form-control" required="">
                     </div>
                     <div class="form-group col-lg-4">
                       <label for="exampleInput">Discount Price </label>
-                      <input type="text" name="discount_price" value="{{$data->discount_price}}" class="form-control">
+                      <input type="text" name="discount_price" value="{{$product->discount_price}}" class="form-control">
                     </div>
                   </div>
                   <div class="row">
                     <div class="form-group col-lg-6">
                       <label for="exampleInputEmail1">Warehouse <span class="text-danger">*</span> </label>
-                      <select class="form-control" name="warehouse" >
+                      <select class="form-control" name="warehouse">
                         {{-- @foreach($warehouse as $row)
                          <option value="{{ $row->warehouse_name }}">{{ $row->warehouse_name }}</option>
                         @endforeach --}}
-
                       </select>
                     </div>
                     <div class="form-group col-lg-6">
                       <label for="exampleInputPassword1">Stock</label>
-                      <input type="text" name="stock_quantity" value="{{$data->stock_quantity}}" class="form-control">
+                      <input type="text" name="stock_quantity" value="{{$product->stock_quantity}}" class="form-control">
                     </div>
                   </div>
 
                   <div class="row">
                     <div class="form-group col-lg-6">
                       <label for="exampleInputEmail1">Color</label><br>
-                      <input type="text" class="form-control" value="{{$data->color}}" data-role="tagsinput" name="color" />
+                      <input type="text" class="form-control" value="{{$product->color}}" data-role="tagsinput" name="color" />
                     </div>
                     <div class="form-group col-lg-6">
                       <label for="exampleInputPassword1">Size</label><br>
-                      <input type="text" class="form-control" value="{{$data->size}}" data-role="tagsinput" name="size"  />
+                      <input type="text" class="form-control" value="{{$product->size}}" data-role="tagsinput" name="size"  />
                     </div>
                   </div>
 
                   <div class="row">
                     <div class="form-group col-lg-12">
                       <label for="exampleInputPassword1">Product Details</label>
-                      <textarea class="form-control textarea" name="description">{{$data->description}} </textarea>
+                      <textarea class="form-control textarea" name="description">{{$product->description}}</textarea>
                     </div>
                   </div>
 
                   <div class="row">
                     <div class="form-group col-lg-12">
                       <label for="exampleInputPassword1">Video Embed Code</label>
-                      <input class="form-control" name="video" value="{{$data->video}}" placeholder="Only code after embed word">
+                      <input class="form-control" name="video" value="{{$product->vide}}" placeholder="Only code after embed word">
                       <small class="text-danger">Only code after embed word</small>
                     </div>
                   </div>
@@ -216,27 +210,32 @@
                   </div>
                      <div class="card p-4">
                         <h6>Featured Product</h6>
-                       <input type="checkbox" name="featured" value="1" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
+                       <input type="checkbox" name="featured" value="1" @if ($product->featured==1) checked
+                       @endif  data-bootstrap-switch data-off-color="danger" data-on-color="success">
                      </div>
 
                      <div class="card p-4">
                         <h6>Today Deal</h6>
-                       <input type="checkbox" name="today_deal" value="1" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
+                       <input type="checkbox" name="today_deal" value="1"@if ($product->today_deal==1) checked
+                       @endif data-bootstrap-switch data-off-color="danger" data-on-color="success">
                      </div>
 
                      <div class="card p-4">
                         <h6>Slider Product</h6>
-                       <input type="checkbox" name="product_slider" value="1"  data-bootstrap-switch data-off-color="danger" data-on-color="success">
+                       <input type="checkbox" name="product_slider" value="1" @if ($product->product_slider==1) checked
+                       @endif  data-bootstrap-switch data-off-color="danger" data-on-color="success">
                      </div>
 
                      <div class="card p-4">
                         <h6>Trendy Product</h6>
-                       <input type="checkbox" name="trendy" value="1"  data-bootstrap-switch data-off-color="danger" data-on-color="success">
+                       <input type="checkbox" name="trendy" value="1" @if ($product->trendy==1) checked
+                       @endif  data-bootstrap-switch data-off-color="danger" data-on-color="success">
                      </div>
 
                      <div class="card p-4">
                         <h6>Status</h6>
-                       <input type="checkbox" name="status" value="1" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
+                       <input type="checkbox" name="status" value="1" @if ($product->status==1) checked
+                       @endif data-bootstrap-switch data-off-color="danger" data-on-color="success">
                      </div>
 
               </div>
@@ -311,3 +310,4 @@
 
 </script>
 @endsection
+

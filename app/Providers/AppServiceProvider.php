@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Providers;
-
+use DB;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+       $settings=DB::table('settings')->first();
+       view()->share('setting', $settings);
     }
 }

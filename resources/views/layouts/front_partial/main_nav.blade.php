@@ -16,7 +16,7 @@
                             <div class="cat_burger"><span></span><span></span><span></span></div>
                             <div class="cat_menu_text">categories</div>
                         </div>
-
+                        
                         <ul class="cat_menu">
 
                             @foreach ($category as $row)

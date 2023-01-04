@@ -59,14 +59,23 @@
                         <div class="brand_name">Brand: {{$product->Brandcategory->brand_name}}</div>
 						<div class="stock">Stock: {{$product->stock_quantity}}</div>
 						<div class="unit">Unit: {{$product->unit}}</div>
+						{{-- review star --}}
+						<div>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star "></span>
+						</div>
 
-                        <div class="price">Price:
-                            @if ($product->discount_price==NULL)
-                            <div class="viewd_price"><span>{{$setting->currency}}{{$product->selling_price}}</span></div>
+                        <div>
+							@if ($product->discount_price==NULL)
+							<div class="" style="margin-top: 10px">Price:{{$setting->currency}}{{$product->selling_price}}</div>
                             @else
-                            <div class="viewd_price" ><span class="text-danger"><del>{{$setting->currency}}{{$product->discount_price}} </del></span class="text-danger"> {{$setting->currency}}{{$product->selling_price}}</div>
-                            @endif
+							<div class="" >Price:<del class="text-danger">{{$setting->currency}}{{$product->discount_price}} </del class="text-danger">{{$setting->currency}}{{$product->selling_price}}</div>
+							@endif
                         </div>
+
 
                         <div class="form-group">
                             <div class="row">
@@ -113,15 +122,14 @@
 									<button type="button" class="button cart_button">Add to Cart</button>
 									<div class="product_fav"><i class="fas fa-heart"></i></div>
 								</div>
-
 							</form>
 						</div>
+				    </div>
 
-				</div>
 				<div class="col-lg-3 order-3" style="border-left: 1px solid grey; padding-left: 10px;">
 					{{-- {!! $shareButtons1 !!} --}}
 				<strong class="text-muted">Pickup Point of this product</strong><br>
-				<i class="fa fa-map"> gsadgasdg </i><hr><br>
+				<i class="fa fa-map"> abcd </i><hr><br>
 				<strong class="text-muted"> Home Delivery :</strong><br>
 				 -> (4-8) days after the order placed.<br>
 				 -> Cash on Delivery Available.

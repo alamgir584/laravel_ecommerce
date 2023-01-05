@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -38,6 +39,25 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+    public function customerlogin(Request $request)
+    {
+        $validated = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+        if (Auth::where('email', $request->email)->where('is_admin', 0)->first())
+
+        {
+            if (auth()->attempt(array('email' =>$request->email ,'password' =>$request->password ))) {
+                    return redirect()->route('customer.home');
+                }
+            else {
+                return redirect()->back()->with('error','Invalid email or password');
+            }
+        }
+
+    }
+
     public function login(Request $request)
     {
         $validated = $request->validate([

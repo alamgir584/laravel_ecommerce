@@ -17,6 +17,7 @@ class IndexController extends Controller
 {
     public function index()
     {
+    
         $category=Category::all();
         $bannerproduct=Product::where('product_slider',1)->latest()->first();
         return view('frontend.index', compact('category','bannerproduct'));

@@ -104,7 +104,7 @@
                                            <div>
                                             <strong>login your account</strong><br>
                                             <br>
-                                               <form action="{{ route('customer.login') }}" method="post">
+                                               <form action="{{ route('login') }}" method="post">
                                                 @csrf
                                                    <div class="form-group">
                                                        <label>Email Address</label>

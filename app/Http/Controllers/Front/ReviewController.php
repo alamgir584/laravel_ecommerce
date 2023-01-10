@@ -28,7 +28,7 @@ class ReviewController extends Controller
            return redirect()->back()->with($notification);
         }
 
-        
+
         Review::insert([
             'user_id'=>Auth::id(),
             'product_id'=>$request->product_id,
@@ -40,6 +40,6 @@ class ReviewController extends Controller
         ]);
 
 
-        return redirect()->back()->with();
+        return redirect()->back()->with('review');
     }
 }

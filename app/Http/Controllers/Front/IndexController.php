@@ -29,7 +29,7 @@ class IndexController extends Controller
          $brand=Brand::all();
          $product=Product::where('slug',$slug)->first();
          $related_product=DB::table('products')->where('subcategory_id',$product->subcategory_id)->orderBy('id','DESC')->take(10)->get();
-         $review=Review::where('product_id',$product->id)->get();
+         $review=Review::where('product_id',$product->id)->orderBy('id','DESC')->take(6)->get();
 
 
         return view('frontend.product_details', compact('category','brand','product','related_product','review'));

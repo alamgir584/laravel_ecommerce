@@ -75,6 +75,7 @@
 						<div class="unit">Unit: {{$product->unit}}</div>
 						{{-- average review star --}}
                         <div>
+                            @if ($sum_rating!=NULL)
                             @if (intval($sum_rating/$count_rating)==5)
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
@@ -105,6 +106,7 @@
                             <span class="fa fa-star"></span>
                             <span class="fa fa-star"></span>
                             <span class="fa fa-star"></span>
+                            @endif
                             @endif
                         </div>
 
@@ -158,10 +160,25 @@
                             </div>
 						</div>
 
-								<div class="button_container">
+								{{-- <div class="button_container">
 									<button type="button" class="button cart_button">Add to Cart</button>
 									<div class="product_fav"><i class="fas fa-heart"></i></div>
-								</div>
+								</div> --}}
+
+                                <div class="button_container">
+                                    <div class="input-group mb-3">
+                                      <div class="input-group-prepend">
+                                          {{-- @if($product->stock_quantity<1)
+                                          <button class="btn btn-outline-danger" disabled="">Stock Out</button>
+                                          @else --}}
+                                        <button class="btn btn-outline-info" type="submit"> <span class="loading d-none">....</span> Add to cart</button>
+                                        {{-- @endif --}}
+
+                                        <a href="{{ route('add.wishlist',$product->id)}}" class="btn btn-outline-primary" type="button">Add to wishlist</a>
+                                      </div>
+                                    </div>
+                                </div>
+
 							</form>
 						</div>
 				    </div>
@@ -216,6 +233,7 @@
         <div class="col-lg-3">
             Average Review of  {{ $product->name }}:<br>
             <div>
+                @if ($sum_rating!=NULL)
                 @if (intval($sum_rating/$count_rating)==5)
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
@@ -246,6 +264,7 @@
                 <span class="fa fa-star"></span>
                 <span class="fa fa-star"></span>
                 <span class="fa fa-star"></span>
+                @endif
                 @endif
             </div>
         </div>

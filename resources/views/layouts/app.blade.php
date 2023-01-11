@@ -198,6 +198,10 @@
 						</div>
 					</div>
 
+                    @php
+                        $wishlist=DB::table('wishlists')->where('user_id',Auth::id())->count();
+                    @endphp
+
 					<!-- Wishlist -->
 					<div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
 						<div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
@@ -205,7 +209,7 @@
 								<div class="wishlist_icon"><img src="{{asset('public/frontend/images/heart.png')}}" alt=""></div>
 								<div class="wishlist_content">
 									<div class="wishlist_text"><a href="#">Wishlist</a></div>
-									<div class="wishlist_count">115</div>
+									<div class="wishlist_count">{{$wishlist}}</div>
 								</div>
 							</div>
 
@@ -355,10 +359,10 @@
 					<div class="footer_column">
 						<div class="footer_title">Find it Fast</div>
 						<ul class="footer_list">
-                            @foreach ($category as $row)
+                            {{-- @foreach ($category as $row)
 
 							<li><a href="#">{{$row->category_name}}</a></li>
-                            @endforeach
+                            @endforeach --}}
 						</ul>
 					</div>
 				</div>

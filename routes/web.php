@@ -22,9 +22,6 @@ Route::get('/login', function () {
 return redirect()->to('/');
 })->name('login');
 
-Route::get('/register', function () {
-    return redirect()->to('/');
-    })->name('register');
 
 // Route::post('/customer/login', [App\Http\Controllers\Auth\LoginController::class,'customerlogin'])->name('customer.login');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -36,4 +33,6 @@ Route::group(['namespace'=>'App\Http\Controllers\Front'],function(){
 
     //review section
     Route::post('/store/review', 'ReviewController@store')->name('store.review');
+     //wishlist section
+    Route::get('/add/wishlist/{id}', 'ReviewController@AddWishlist')->name('add.wishlist');
 });

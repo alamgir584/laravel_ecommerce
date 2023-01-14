@@ -22,6 +22,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/styles/responsive.css') }}">
 {{-- <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/styles/product_styles.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/styles/product_responsive.css')}}"> --}}
+
 </head>
 
 <body>
@@ -438,6 +439,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="{{asset('public/frontend/plugins/easing/easing.js')}}"></script>
 <script src="{{asset('public/frontend/js/custom.js')}}"></script>
 {{-- <script src="{{('js/product_custom.js"')}}></script> --}}
+
 </body>
 
 </html>

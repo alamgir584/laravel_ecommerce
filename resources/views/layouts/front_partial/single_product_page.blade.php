@@ -427,12 +427,6 @@
 								<div class="viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
 									<div class="viewed_image"><img src="{{asset('public/files/product/'.$row->thumbnail)}}" alt="{{$row->name}}"></div>
 									<div class="viewed_content text-center">
-
-                                        {{-- @if ($row->discount_price==NULL)
-                                        <div class="viewed_price"><span>{{$setting->currency}}{{$row->selling_price}}<span> </div>
-                                        @else
-                                        <div class="viewed_price" >{{$setting->currency}}{{$row->selling_price}} <span> {{$setting->currency}}{{$row->discount_price}}</span></div>
-                                        @endif --}}
                                         @if ($row->discount_price==NULL)
                                         <div class="viewd_price"><span>{{$setting->currency}}{{$row->selling_price}}</span></div>
                                         @else

@@ -248,7 +248,7 @@
 						<div class="tabbed_container">
 							<div class="tabs">
 								<ul class="clearfix">
-									<li class="active">Featured</li>
+									<li class="active">New Product</li>
 									<li>On Sale</li>
 								</ul>
 								<div class="tabs_line"><span></span></div>

@@ -22,13 +22,15 @@ class IndexController extends Controller
         $category=Category::all();
         $bannerproduct=Product::where('product_slider',1)->latest()->first();
         $product=Product::all();
-        return view('frontend.index', compact('category','bannerproduct','product'));
+        $popular_product=Product::where('status',1)->orderBy('product_views','DESC')->limit(8)->get();
+        return view('frontend.index', compact('category','bannerproduct','product','popular_product'));
     }
     public function ProductDetails($slug)
     {
          $category=Category::all();
          $brand=Brand::all();
          $product=Product::where('slug',$slug)->first();
+                  Product::where('slug',$slug)->increment('product_views');
          $related_product=DB::table('products')->where('subcategory_id',$product->subcategory_id)->orderBy('id','DESC')->take(10)->get();
          $review=Review::where('product_id',$product->id)->orderBy('id','DESC')->take(6)->get();
 

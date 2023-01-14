@@ -249,7 +249,7 @@
 							<div class="tabs">
 								<ul class="clearfix">
 									<li class="active">New Product</li>
-									<li>On Sale</li>
+									<li>Most Popular</li>
 								</ul>
 								<div class="tabs_line"><span></span></div>
 							</div>
@@ -258,7 +258,7 @@
 							<div class="product_panel panel active">
 								<div class="featured_slider slider">
 
-									<!-- Slider Item -->
+									<!-- Slider Item new product -->
                                     @foreach ($product as $row)
 									<div class="featured_slider_item">
 										<div class="border_active"></div>
@@ -312,8 +312,8 @@
 							<div class="product_panel panel">
 								<div class="featured_slider slider">
 
-									<!-- Slider Item -->
-                                    @foreach ($product as $row)
+									<!-- Slider Item popular product -->
+                                    @foreach ($popular_product as $row)
 									<div class="featured_slider_item">
 										<div class="border_active"></div>
 										<div class="product_item discount d-flex flex-column align-items-center justify-content-center text-center">

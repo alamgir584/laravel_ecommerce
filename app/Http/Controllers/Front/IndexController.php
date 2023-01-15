@@ -23,7 +23,8 @@ class IndexController extends Controller
         $bannerproduct=Product::where('product_slider',1)->latest()->first();
         $product=Product::all();
         $popular_product=Product::where('status',1)->orderBy('product_views','DESC')->limit(8)->get();
-        return view('frontend.index', compact('category','bannerproduct','product','popular_product'));
+        $trendy_product=Product::where('status',1)->where('trendy',1)->orderBy('trendy','DESC')->limit(8)->get();
+        return view('frontend.index', compact('category','bannerproduct','product','popular_product','trendy_product'));
     }
     public function ProductDetails($slug)
     {

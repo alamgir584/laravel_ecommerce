@@ -42,19 +42,22 @@
                                             <th>Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        @foreach ($data as $key => $row)
-                                            <tr>
-                                                <td>{{ $key + 1 }}</td>
-                                                <td>{{ $row->brand_name }}</td>
-                                                <td>{{ $row->brand_slug }}</td>
-                                                <td><img src="{{ asset('public/files/brand/' . $row->brand_logo) }}"
-                                                        width="120" height="30"></td>
+                                <tbody>
+                                    @foreach ($data as $key => $row)
+                                        <tr>
+                                            <td>{{ $row->start_date }}</td>
+                                            <td>{{ $row->title }}</td>
+                                        <td><img src="{{ asset('public/files/campaign/'.$row->image) }}"
+                                                width="120" height="30">
+                                            </td>
+                                            <td>{{ $row->discount }}</td>
+                                            <td>{{ $row->status }}</td>
+
                                                 <td>
                                             <a id="brand_modal_open" href="#" class="btn btn-info btn-sm edit"
                                                         data-id="{{ $row->id }}" data-toggle="modal"
                                                         data-target="#editModal"><i class="fas fa-edit"></i></a>
-                                           <a href="{{ route('brand.delete', $row->id) }}"
+                                           <a href="{{ route('campaign.delete', $row->id) }}"
                                             class="btn btn-danger btn-sm" id="delete"><i
                                             class="fas fa-trash"></i></a>
                                                 </td>
@@ -76,14 +79,14 @@
             {{-- modal-lg ar mane add new button a click korle boro kore asbe --}}
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="categoryModal">Add New Campaign</h5>
+                    <h5 class="modal-category" id="categoryModal">Add New Campaign</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
 
 
-                <form action="{{ route('brand.store') }}" enctype="multipart/form-data" method="POST">
+                <form action="{{ route('campaign.store') }}" enctype="multipart/form-data" method="POST">
                     @csrf
                     <div class="modal-body">
                         <div class="form-group">
@@ -144,25 +147,25 @@
 
     <!--  category Edit Modal -->
     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModal" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editModal">Edit Brand</h5>
+                    <h5 class="modal-title" id="editModal">Edit campaign</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
 
 
-                <form action="{{ route('brand.update') }}" enctype="multipart/form-data" method="POST">
+                <form action="{{ route('campaign.update') }}" enctype="multipart/form-data" method="POST">
                     @csrf
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="brand_name">Brand Name</label>
+                            <label for="brand_name">Campaign Title<span class="text-danger">*</span></label>
                             <input type="text" class="form-control" name="brand_name" id="edit_brand_name" required>
                             <br>
                             <input type="hidden" class="form-control" id="brand_id" name="id" >
-                            <small id="emailHelp" class="form-text text-muted">Your Main Brand</small>
+                            <small id="emailHelp" class="form-text text-muted">This is your campaign title</small>
                         </div>
 
                         <div class="form-group">
@@ -182,7 +185,11 @@
             </div>
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
         integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 

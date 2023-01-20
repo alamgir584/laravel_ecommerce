@@ -52,7 +52,7 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','middleware'=>'is_admin'
         Route::post('/update','subcategoryController@update')->name('subcategory.update');
     });
     //Route::get('/get-child-category/{id}','SubcategoryController@GetChildCategory');
-    
+
      //childcategory Routes
     Route::prefix('childcategory')->group(function () {
         Route::get('/','ChildcategoryController@index')->name('childcategory.index');
@@ -114,6 +114,15 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','middleware'=>'is_admin'
             Route::get('/edit/{id}','CouponController@edit')->name('edit.coupon');
             Route::post('/update/{id}','CouponController@update')->name('update.coupon');
             });
+            //campaign Routes
+    Route::group(['prefix'=>'campaign'], function(){
+        Route::get('/','CampaignController@index')->name('campaign.index');
+        // Route::get('/create','CouponController@create')->name('create.coupon');
+        // Route::post('/store','CouponController@store')->name('store.coupon');
+        // Route::get('/delete/{id}','CouponController@delete')->name('coupon.delete');
+        // Route::get('/edit/{id}','CouponController@edit')->name('edit.coupon');
+        // Route::post('/update/{id}','CouponController@update')->name('update.coupon');
+        });
             //Pickup Point Routes
     Route::group(['prefix'=>'Pickup-point'], function(){
             Route::get('/','PickupController@index')->name('pickup-point.index');

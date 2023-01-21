@@ -77,9 +77,10 @@ class CampaignController extends Controller
     	$data['discount']=$request->discount;
     	if ($request->image)
         {
-    		  if (File::exists("public/files/campaign/".$request->old_iamge))
+    		  if (File::exists("public/files/campaign/".$request->old_image))
               {
-    		    unlink("public/files/campaign/".$request->old_iamge);
+    		     unlink("public/files/campaign/".$request->old_image);
+
     	      }
     		  $photo=$request->image;
               $photoname = uniqid()."-".$request->file('image')->getClientOriginalName();

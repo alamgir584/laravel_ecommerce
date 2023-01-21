@@ -120,7 +120,7 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','middleware'=>'is_admin'
            Route::post('/store','CampaignController@store')->name('campaign.store');
            Route::get('/delete/{id}','CampaignController@delete')->name('campaign.delete');
            Route::get('/edit/{id}','CampaignController@edit');
-           Route::post('/update/{id}','CampaignController@update')->name('campaign.update');
+           Route::post('/update','CampaignController@update')->name('campaign.update');
         });
             //Pickup Point Routes
     Route::group(['prefix'=>'Pickup-point'], function(){

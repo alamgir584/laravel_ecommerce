@@ -54,7 +54,7 @@
                                             <td>{{ $row->status }}</td>
 
                                                 <td>
-                                            <a id="brand_modal_open" href="#" class="btn btn-info btn-sm edit"
+                                            <a id="campaign_modal_open" href="#" class="btn btn-info btn-sm edit"
                                                         data-id="{{ $row->id }}" data-toggle="modal"
                                                         data-target="#editModal"><i class="fas fa-edit"></i></a>
                                            <a href="{{ route('campaign.delete', $row->id) }}"
@@ -150,7 +150,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editModal">Edit campaign</h5>
+                    <h5 class="modal-title" id="editModal">Edit Campaign</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -161,18 +161,58 @@
                     @csrf
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="brand_name">Campaign Title<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="brand_name" id="edit_brand_name" required>
+                            <label for="title">Campaign Title</label>
+                            <input type="text" class="form-control" name="title" id="edit_title" required>
                             <br>
-                            <input type="hidden" class="form-control" id="brand_id" name="id" >
+                            <input type="hidden" class="form-control" id="title_id" name="id" >
                             <small id="emailHelp" class="form-text text-muted">This is your campaign title</small>
                         </div>
 
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="start_date">Start Date<span class="text-danger">*</span></label>
+                                    <input type="date" class="form-control" name="start_date" id="edit_start_date" required="">
+                                    <input type="hidden" class="form-control" id="start_date_id" name="start_date_id" >
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="end_date">End Date<span class="text-danger">*</span></label>
+                                    <input type="date" class="form-control" name="end_date" id="edit_end_date" required="">
+                                    <input type="hidden" class="form-control" id="end_date_id" name="end_date_id" >
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="status">Status<span class="text-danger">*</span></label>
+                                    <select name="status" id="status" class="form-control">
+                                        <option value="1">Active</option>
+                                        <option value="0">Inactive</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="discount">Discount(%)<span class="text-danger">*</span></label>
+                                    <input type="number" class="form-control" name="discount" id="edit_discount" required="">
+                                    <input type="hidden" class="form-control" id="discount_id" name="discount_id" >
+                                    <small id="emailHelp" class="form-text text-danger ">Discount parcentage are apply for all product selling price</small>
+                                </div>
+                            </div>
+                        </div>
+
+
+
                         <div class="form-group">
-                            <label for="brand_logo">Brand Logo</label>
-                            <input type="file" class="form-control" name="brand_logo" id="edit_brand_logo" required>
-                            <input type="hidden"  id="old_brand_logo" name="old_brand_logo">
-                            <small id="emailHelp" class="form-text text-muted">Your Main Brand Logo</small>
+                            <label for="image">Image</label>
+                            <input type="file" class="form-control" name="image" id="edit_image" required>
+                            <input type="hidden"  id="old_image" name="old_image">
+                            <small id="emailHelp" class="form-text text-muted">This is our campaign banner</small>
                         </div>
 
 
@@ -194,13 +234,27 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
         <script type="text/javascript">
-            $('body').on('click', '#brand_modal_open', function() {
+            $('body').on('click', '#campaign_modal_open', function() {
                 let cat_id = $(this).data('id');
-                $.get("brand/edit/" + cat_id, function(data) {
+                $.get("campaign/edit/" + cat_id, function(data) {
                     console.log(data.id);
-                    $('#edit_brand_name').val(data.brand_name);
-                    $('#old_brand_logo').val(data.brand_logo);
-                    $('#brand_id').val(data.id);
+                    $('#edit_title').val(data.title);
+                    $('#edit_start_date').val(data.start_date);
+                    $('#edit_end_date').val(data.end_date);
+                    $('#edit_discount').val(data.discount);
+                    $('#old_image').val(data.image);
+                    $('#title_id').val(data.id);
+                    $('#start_date_id').val(data.start_date_id);
+                    $('#end_date_id').val(data.end_date_id);
+                    $('#end_date_id').val(data.end_date_id);
+                    $('#discount_id').val(data.discount_id);
+
+                    // if(data.status==0){
+                    //     $('#status option:eq(0)').prop('selected', true)
+                    // }else{
+                    //     $('#status option:eq(1)').prop('selected', true)
+                    // }
+
                 });
             });
         </script>
